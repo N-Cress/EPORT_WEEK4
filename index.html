@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noah Cress</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
     <script src="index.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("kXO2GUU8lkGiiTFaV");
+        })();
+    </script>
 </head>
 <body>
     <section id="landing-page" onmousemove="moveBackground(event)">
@@ -28,14 +34,14 @@
                     link__hover-effect--black
                     "> About </a>
                 </li>
-                <li class="nav__link">
-                    <a href=" " class="nav__link--anchor
+                <li onclick="toggleModal()" class="nav__link">
+                    <a  href="#" class="nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black
-                    "> About </a>
+                    "> Contact </a>
                 </li>
-                <li class="nav__link click">
-                    <a href=" " class="nav__link--anchor
+                <li class="nav__link click" onclick="toggleContrast()" >
+                    <a href="#" class="nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black
                     ">  
@@ -46,7 +52,7 @@
         </nav>
         <header>
             <h1 class="title">
-                Hi
+                Hello
             </h1>
             <h1 class="title light-blue"> I'm Noah. </h1>
             <p class="header__para">
@@ -60,13 +66,13 @@
                 <a href="" target="_blank" class="social__link click">
                     <i class="fab fa-github" aria-hidden="true"></i>
                 </a>
-                <a href="" target="_blank" class="social__link click">
+                <a href="" target="_blank" target="_blank" class="social__link click">
                     <i class="fas fa-file-pdf" aria-hidden="true"></i>
                 </a>
             </div>
         </header>
         <a href="#">
-            <button class="mail__btn click" onClick="toggleModal()"> 
+            <button class="mail__btn click" onclick="toggleModal()"> 
                 <i class="fas fa-envelope" aria-hidden="true"></i>
             </button>
         </a>
@@ -74,7 +80,63 @@
             <div class="scroll__icon click"></div>
         </a>
         <div class="modal">
-
+            <div class="modal__half modal__about">
+                <h3 class="modal__title modal__title--about"> Hi! I'm Noah Cress. </h3>
+                <h4 class="modal__sub-title modal__subtitle--about">  </h4>
+                <p class="modal__para">
+                    A 26 year old that is looking to broaden his knowledge and acquire new skills. I currently work with 
+                    <span class="light-blue"> Adcomp Systems</span> as a <span class="light-blue">Technical Support Representative</span>,
+                     troubleshooting outstanding problems and communicating with our clientele daily to keep everything working well. 
+                </p>
+                <div class="modal__languages">
+                    <figure class="modal__language">
+                        <img class="modal__language--img"
+                          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png"
+                          alt="">
+                        <span class="language__name">HTML</span>
+                      </figure>
+                      <figure class="modal__language">
+                        <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/css-131-722685.png"
+                          alt="">
+                        <span class="language__name">CSS</span>
+                      </figure>
+                      <figure class="modal__language">
+                        <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png"
+                          alt="">
+                        <span class="language__name">JavaScript</span>
+                      </figure>
+                </div>
+            </div>
+            <div class="modal__half modal__contact">
+                <i class="fas fa-times modal__exit click" onclick="toggleActive()"></i>
+                <h3 class="modal__title modal__title--contact"> Let's talk! </h3>
+                <h3 class="modal__sub-title modal__sub-title--contact">
+                    Excited to explore new opportunities and find new avenues for growth.
+                </h3>
+                <form id="contact__form" onsubmit="contact(event)">
+                    <div class="form__item">
+                        <label class="form__item--label"> Name </label>
+                        <input type="text" class="input" name="user_name" required> </input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label"> Email </label>
+                        <input type="email" class="input" name="user_email" required> </input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label"> Message </label>
+                        <textarea type="text" class="input" name="message" required> </textarea>
+                    </div>
+                    <button id="contact__submit" class="form__submit">
+                        Submit
+                    </button>
+                </form>
+                <div class="modal__overlay modal__overlay--loading">
+                    <i class="fas fa-spinner"></i>
+                  </div>
+                  <div class="modal__overlay modal__overlay--success">
+                    Thanks for the message! Looking forward to speaking to you soon.
+                  </div>
+            </div>
         </div>
         <img src="./assets/semi circle.svg" class="shape shape--0" style="transform: translate(67px, 25.3px) rotate(670deg);">
         <img src="./assets/circle.svg" class="shape shape--1" style="transform: translate(-67px, -25.3px) rotate(-670deg);">
@@ -86,5 +148,100 @@
         <img src="./assets/circle.svg" class="shape shape--7" style="transform: translate(-67px, -25.3px) rotate(-670deg);">
         <img src="./assets/semi circle.svg" class="shape shape--8" style="transform: translate(67px, 25.3px) rotate(670deg);">
     </section>
+    <section id="projects">
+        <div class="container">
+            <div class="row">
+                <h1 class="section__title">
+                    Here are some of my <span class="light-blue"> projects </span>
+                </h1>
+                <ul class="project__list">
+                    <li class="project">
+                        <div class="project__wrapper">
+                            <img src="assets/google mockup.png" alt="" class="project__img">
+                            <div class="project__wrapper--bg"></div>
+                            <div class="project__description">
+                                <h3 class="project__description--title"> Google In-Store </h3>
+                                <h4 class="project__description--sub-title"> Html, CSS, JavaScript, Vue, Vuex </h4>
+                                <p class="project__description--para">
+                                    Google In-Store is a platform allowing Google retail employees to report any issues with their store products. Once an issue is reported, it is posted to an API which populates a separate platform's frontend - which is used by Google's vendors to fix the issue as soon as possible. I was the sole front-end developer of this application
+                                </p>
+                                <div class="project__description--links">
+                                    <a href="">
+                                        <i class="fas fa-link" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="project">
+                        <div class="project__wrapper">
+                            <img src="assets/google mockup.png" alt="" class="project__img">
+                            <div class="project__wrapper--bg"></div>
+                            <div class="project__description">
+                                <h3 class="project__description--title"> Google In-Store </h3>
+                                <h4 class="project__description--sub-title"> Html, CSS, JavaScript, Vue, Vuex </h4>
+                                <p class="project__description--para">
+                                    Google In-Store is a platform allowing Google retail employees to report any issues with their store products. Once an issue is reported, it is posted to an API which populates a separate platform's frontend - which is used by Google's vendors to fix the issue as soon as possible. I was the sole front-end developer of this application
+                                </p>
+                                <div class="project__description--links">
+                                    <a href="">
+                                        <i class="fas fa-link" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="project">
+                        <div class="project__wrapper">
+                            <img src="assets/google mockup.png" alt="" class="project__img">
+                            <div class="project__wrapper--bg"></div>
+                            <div class="project__description">
+                                <h3 class="project__description--title"> Google In-Store </h3>
+                                <h4 class="project__description--sub-title"> Html, CSS, JavaScript, Vue, Vuex </h4>
+                                <p class="project__description--para">
+                                    Google In-Store is a platform allowing Google retail employees to report any issues with their store products. Once an issue is reported, it is posted to an API which populates a separate platform's frontend - which is used by Google's vendors to fix the issue as soon as possible. I was the sole front-end developer of this application
+                                </p>
+                                <div class="project__description--links">
+                                    <a href="">
+                                        <i class="fas fa-link" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row footer__row">
+                <a href="">
+                    <figure>
+                        <img src="./assets/NC.svg" alt="Logo" class="footer__logo">
+                    </figure>
+                    <span class="footer__logo--popper">
+                        " Top "
+                        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                    </span>
+                </a>
+                <ul class="footer__list">
+                    <li class="footer__list-item">
+                        <a class="footer__list-anchor" target="_blank" href="https://github.com/N-Cress">Github</a>
+                    </li>
+                    <li class="footer__list-item">
+                        <a class="footer__list-anchor" href="">Linkedin</a>
+                    </li>
+                    <li class="footer__list-item">
+                        <a  class="footer__list-anchor" href="">Contact</a>
+                    </li>
+                    <li class="footer__list-item">
+                        <a class="footer__list-anchor" href="">Resume</a>
+                    </li>
+                </ul>
+                <div class="footer__copyright"> Copyright © 2021 Noah Cress </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
