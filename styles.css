@@ -11,10 +11,6 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    background-color: #fff;
-}
-
 ul {
     list-style: none;
 }
@@ -26,6 +22,7 @@ a {
 
 section {
     transition: all 300ms ease;
+    background-color: #fff;
 }
 
 nav {
@@ -38,7 +35,7 @@ nav {
 
 #landing-page {
     padding-top: 24px;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 header {
@@ -100,6 +97,29 @@ label {
     transform: scale(0.8);
 }
 
+.link__hover-effect:after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    height: 3px;
+    width: 0;
+    right: 0;
+    transition: all 300ms ease;
+  }
+  
+  .link__hover-effect--white:after {
+    background-color: #fff;
+  }
+  
+  .link__hover-effect--black:after {
+    background-color: #242424;
+  }
+  
+  .link__hover-effect:hover:after {
+    left: 0;
+    width: 100%;
+  }
+
 .light-blue {
     color: #373970;
 }
@@ -118,6 +138,22 @@ label {
 
 button {
     cursor: pointer;
+}
+
+nav,
+.scroll,
+header {
+  opacity: 1;
+  visibility: visible;
+  transition: all 600ms 800ms;
+}
+
+.modal--active nav,
+.modal--active .scroll,
+.modal--active header {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 400ms ease;
 }
 
 /* NAV */
@@ -201,7 +237,6 @@ button {
 /* MODAL */
 
 .modal {
-    visibility: hidden;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -212,8 +247,9 @@ button {
     border-radius: 20px;
     overflow: hidden;
     display: flex;
+    visibility: hidden;
     z-index: -1;
-    transition: visibility 1s, z-index 1s, box-shadow 0.5 ease;
+    transition: visibility 1s, z-index 1s, box-shadow 0.5s ease;
 }
 
 .modal__exit {
@@ -241,10 +277,12 @@ button {
     transition: all 300ms ease-in;
 }
 
+
 .modal--active .modal__about,
 .modal--active .modal__contact
 {
     transform: translateX(0%);
+    visibility: visible;
 }
 
 .modal__about {
@@ -288,9 +326,10 @@ button {
 }
 
 .modal__contact {
-    transform: translateX(-110%);
+    transform: translateX(100%);
     background-color: #242424;
-    color: #fff;
+    color: white;
+    visibility: hidden;
 }
 
 .modal__title {
@@ -494,7 +533,6 @@ button {
     position: relative;
     border-radius: 20px;
     box-shadow: 0 20px 80px 0 rgb(0, 0, 0, 0.45);
-    transition: all 600ms ease;
 }
 
 .project__img {
@@ -507,7 +545,7 @@ button {
     top: 50%;
     left: 10%;
     visibility: hidden;
-    transition: all 400ms ease;
+    transition: opacity 300ms, transform 450ms ease;
     transform: translateY(100%);
     color: #fff;
     max-width: 480px;
@@ -575,6 +613,7 @@ button {
 
 .footer__logo--popper {
     visibility: hidden;
+    transition: all 300ms ease;
 }
 
 .footer__list {
