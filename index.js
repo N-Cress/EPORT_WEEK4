@@ -7,6 +7,10 @@ function moveBackground(event) {
     const x = event.clientX * scaleFactor;
     const y = event.clientY * scaleFactor;
 
+    function getRandomArbitrary(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
     for(let i = 0; i < shapes.length; i++) {
         const isOdd = i % 2 !== 0;
         const boolInt = isOdd ? -1 : 1;
