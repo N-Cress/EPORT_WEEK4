@@ -810,10 +810,11 @@ header {
     nav {
         display: flex;
         max-width: 360px;
-        padding: 0px;
+        
         align-items: center;
-       
+        margin: 0 auto;
     }
+   
     header {
         display: flex;
         flex-direction: column;
@@ -830,7 +831,7 @@ header {
     }
 
     footer {
-        width: 105vw;
+        width: auto;
         height: auto;
     }
 
